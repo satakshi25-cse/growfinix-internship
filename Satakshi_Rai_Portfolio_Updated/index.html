@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Satakshi Rai — Computer Science student, AI & Data Science enthusiast and aspiring software developer." />
+  <title>Satakshi Rai | Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56,189,248,.13), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(139,92,246,.14), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(14,165,233,.08), transparent 30%),
+        #050816;
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .glass {
+      background: rgba(15, 23, 42, .58);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: blur(18px);
+    }
+    .glow { box-shadow: 0 0 80px rgba(34,211,238,.10); }
+    .gradient-text {
+      background: linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+
+<body class="text-slate-100">
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+const projects = [
+  {
+    number: "01",
+    title: "Movie Recommendation System",
+    description: "A content-based movie recommender built using TMDB metadata, combining genres, cast and runtime similarity to generate personalized recommendations.",
+    tags: ["Python", "Machine Learning", "TMDB", "Streamlit"]
+  },
+  {
+    number: "02",
+    title: "Signature Forgery Detection",
+    description: "A deep-learning project using a Siamese Network with adaptive contrastive learning to distinguish genuine signatures from forged signatures.",
+    tags: ["Python", "TensorFlow", "Siamese Network", "Deep Learning"]
+  },
+  {
+    number: "03",
+    title: "Responsive Web Applications",
+    description: "Interactive web applications focused on responsive UI, API integration, CRUD operations and browser-based data persistence.",
+    tags: ["React", "JavaScript", "REST API", "Tailwind CSS"]
+  }
+];
+
+const skills = [
+  ["Programming", "Python · C · C++ · JavaScript"],
+  ["AI / ML", "Machine Learning · Deep Learning · Data Science"],
+  ["Web Development", "React · HTML · CSS · Tailwind CSS · REST APIs"],
+  ["Tools", "Git · GitHub · VS Code · Streamlit"],
+  ["Core CS", "Data Structures · Computer Networks · DBMS"],
+  ["Interests", "AI · Cybersecurity · Cryptography · Intelligent Systems"]
+];
+
+function App() {
+  const [menu, setMenu] = useState(false);
+
+  const go = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenu(false);
+  };
+
+  return (
+    <div className="min-h-screen overflow-x-hidden">
+      {/* NAVBAR */}
+      <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#050816]/80 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+          <button onClick={() => go("home")} className="text-xl font-black tracking-tight">
+            Satakshi<span className="text-cyan-400">.</span>
+          </button>
+
+          <div className="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+            {["home","about","skills","projects","contact"].map(item => (
+              <button
+                key={item}
+                onClick={() => go(item)}
+                className="capitalize transition hover:text-cyan-300"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setMenu(!menu)}
+            className="rounded-xl border border-white/10 px-3 py-2 text-slate-200 md:hidden"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+        </nav>
+
+        {menu && (
+          <div className="border-t border-white/10 bg-[#050816] px-5 py-3 md:hidden">
+            {["home","about","skills","projects","contact"].map(item => (
+              <button
+                key={item}
+                onClick={() => go(item)}
+                className="block w-full py-3 text-left capitalize text-slate-300"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <main className="grid-bg">
+        {/* HERO */}
+        <section id="home" className="mx-auto flex min-h-screen max-w-6xl items-center px-5 pb-16 pt-32">
+          <div className="grid w-full items-center gap-14 lg:grid-cols-[1.2fr_.8fr]">
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-sm text-cyan-200">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400"></span>
+                Computer Science · AI & Data Science
+              </div>
+
+              <p className="mb-3 text-lg font-medium text-slate-400">Hi, I'm</p>
+
+              <h1 className="text-6xl font-black tracking-tight sm:text-7xl lg:text-8xl">
+                Satakshi<br />
+                <span className="gradient-text">Rai.</span>
+              </h1>
+
+              <h2 className="mt-6 text-2xl font-bold text-slate-200 sm:text-3xl">
+                I build intelligent things for the web.
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+                A Computer Science student passionate about Artificial Intelligence,
+                Machine Learning, software development and solving real-world problems
+                through technology.
+              </p>
+
+              <div className="mt-9 flex flex-wrap gap-4">
+                <button
+                  onClick={() => go("projects")}
+                  className="rounded-xl bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-cyan-400/10 transition hover:-translate-y-0.5 hover:bg-cyan-300"
+                >
+                  Explore My Work →
+                </button>
+                <button
+                  onClick={() => go("contact")}
+                  className="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-bold text-white transition hover:-translate-y-0.5 hover:border-cyan-400/50"
+                >
+                  Let's Connect
+                </button>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-500">
+                <span>📍 India</span>
+                <span>🎓 B.Tech CSE</span>
+                <span>⚡ AI / ML Enthusiast</span>
+              </div>
+
+              <div className="mt-5 flex gap-5 text-sm">
+                <a href="https://www.linkedin.com/in/satakshi-rai-2a0ab4283" target="_blank" rel="noopener noreferrer" className="text-slate-400 transition hover:text-cyan-300">
+                  LinkedIn ↗
+                </a>
+                <a href="https://github.com/satakshi25-cse" target="_blank" rel="noopener noreferrer" className="text-slate-400 transition hover:text-cyan-300">
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+
+            {/* PROFILE CARD */}
+            <div className="relative mx-auto w-full max-w-md">
+              <div className="absolute -inset-8 rounded-full bg-cyan-400/10 blur-3xl"></div>
+
+              <div className="glass glow relative rounded-[2rem] p-3">
+                <div className="rounded-[1.5rem] bg-gradient-to-br from-slate-900 to-slate-950 p-8">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-[.25em] text-slate-500">Profile</span>
+                    <span className="text-xs text-cyan-300">01 / 03</span>
+                  </div>
+
+                  <div className="mx-auto mt-10 grid h-40 w-40 place-items-center rounded-full border border-cyan-300/30 bg-gradient-to-br from-cyan-400/20 via-indigo-500/20 to-fuchsia-400/20 text-5xl font-black shadow-2xl shadow-cyan-500/10">
+                    SR
+                  </div>
+
+                  <div className="mt-8 text-center">
+                    <h3 className="text-2xl font-black">Satakshi Rai</h3>
+                    <p className="mt-2 text-slate-400">Developer · AI/ML Learner</p>
+                  </div>
+
+                  <div className="mt-8 grid grid-cols-3 gap-2">
+                    <div className="rounded-xl bg-white/5 p-3 text-center">
+                      <p className="text-xl font-black text-cyan-300">AI</p>
+                      <p className="mt-1 text-[11px] text-slate-500">Focus</p>
+                    </div>
+                    <div className="rounded-xl bg-white/5 p-3 text-center">
+                      <p className="text-xl font-black text-violet-300">ML</p>
+                      <p className="mt-1 text-[11px] text-slate-500">Build</p>
+                    </div>
+                    <div className="rounded-xl bg-white/5 p-3 text-center">
+                      <p className="text-xl font-black text-fuchsia-300">WEB</p>
+                      <p className="mt-1 text-[11px] text-slate-500">Create</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT */}
+        <section id="about" className="border-y border-white/10 bg-slate-950/60">
+          <div className="mx-auto max-w-6xl px-5 py-24">
+            <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[.25em] text-cyan-400">01 — About Me</p>
+                <h2 className="mt-4 text-4xl font-black sm:text-5xl">Curious by nature.<br/><span className="text-slate-500">Builder by choice.</span></h2>
+              </div>
+
+              <div className="space-y-6 text-slate-400 leading-8">
+                <p>
+                  I'm Satakshi Rai, a Computer Science student specializing in AI & Data Science.
+                  I enjoy exploring how intelligent systems can be turned into useful,
+                  practical applications.
+                </p>
+                <p>
+                  My interests span machine learning, deep learning, web development,
+                  cybersecurity and cryptography. I particularly enjoy projects where
+                  I can combine a strong technical foundation with a clean user experience.
+                </p>
+                <p>
+                  I'm continuously learning, building projects and looking for opportunities
+                  where I can contribute, experiment and grow as a software developer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SKILLS */}
+        <section id="skills" className="mx-auto max-w-6xl px-5 py-24">
+          <p className="text-sm font-bold uppercase tracking-[.25em] text-cyan-400">02 — Skills</p>
+          <h2 className="mt-4 text-4xl font-black sm:text-5xl">What I work with.</h2>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {skills.map(([name, list], i) => (
+              <div key={name} className="glass rounded-2xl p-6 transition hover:-translate-y-1 hover:border-cyan-400/30">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-2xl">{["⌘","✦","◈","⚙","▣","◎"][i]}</span>
+                  <span className="text-xs text-slate-600">0{i+1}</span>
+                </div>
+                <h3 className="font-bold">{name}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-500">{list}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section id="projects" className="border-y border-white/10 bg-slate-950/60">
+          <div className="mx-auto max-w-6xl px-5 py-24">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[.25em] text-cyan-400">03 — Projects</p>
+                <h2 className="mt-4 text-4xl font-black sm:text-5xl">Things I've built.</h2>
+              </div>
+              <p className="max-w-sm text-sm leading-6 text-slate-500">
+                A selection of projects across AI, machine learning and modern web development.
+              </p>
+            </div>
+
+            <div className="mt-12 space-y-5">
+              {projects.map(project => (
+                <article key={project.number} className="glass group rounded-3xl p-6 transition hover:-translate-y-1 hover:border-cyan-400/30 sm:p-8">
+                  <div className="grid gap-7 lg:grid-cols-[90px_1fr_auto] lg:items-start">
+                    <div className="text-4xl font-black text-slate-700">{project.number}</div>
+
+                    <div>
+                      <h3 className="text-2xl font-black transition group-hover:text-cyan-300">{project.title}</h3>
+                      <p className="mt-3 max-w-3xl leading-7 text-slate-400">{project.description}</p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="hidden text-2xl text-slate-700 transition group-hover:text-cyan-400 lg:block">↗</div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* EDUCATION */}
+        <section className="mx-auto max-w-6xl px-5 py-24">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[.25em] text-cyan-400">04 — Education</p>
+              <h2 className="mt-4 text-4xl font-black">Building the foundation.</h2>
+            </div>
+            <div className="glass rounded-3xl p-7">
+              <p className="text-sm font-bold text-cyan-300">B.Tech — Computer Science & Engineering</p>
+              <h3 className="mt-2 text-xl font-black">AI & Data Science</h3>
+              <p className="mt-2 text-slate-500">Sikkim Manipal Institute of Technology</p>
+              <div className="mt-6 h-px bg-white/10"></div>
+              <p className="mt-5 text-sm leading-6 text-slate-400">
+                Coursework and project experience across machine learning, deep learning,
+                computer networks, data structures, databases, cybersecurity and cryptography.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="border-t border-white/10 bg-gradient-to-b from-slate-900/70 to-[#050816]">
+          <div className="mx-auto max-w-4xl px-5 py-28 text-center">
+            <p className="text-sm font-bold uppercase tracking-[.25em] text-cyan-400">05 — Contact</p>
+            <h2 className="mt-5 text-5xl font-black sm:text-6xl">Let's build something<br/><span className="gradient-text">interesting.</span></h2>
+            <p className="mx-auto mt-6 max-w-xl leading-7 text-slate-400">
+              I'm open to internships, collaborations and opportunities to work on
+              meaningful technology projects.
+            </p>
+
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
+              <a
+                href="https://www.linkedin.com/in/satakshi-rai-2a0ab4283"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-cyan-400 px-7 py-3.5 font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-300"
+              >
+                <span className="text-lg">in</span>
+                LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/satakshi25-cse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-7 py-3.5 font-bold text-white transition hover:-translate-y-0.5 hover:border-cyan-400/50"
+              >
+                <span className="text-lg">◉</span>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/10 px-5 py-8 text-center text-sm text-slate-600">
+        © 2026 Satakshi Rai · Designed & built with React
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
